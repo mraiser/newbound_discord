@@ -39,14 +39,14 @@ import org.json.*;
 import com.newbound.robot.*;
 import com.newbound.robot.published.DiscordBot;
 import com.newbound.robot.published.discord.Bot;
-import sx.blah.discord.handle.obj.IChannel;
-import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
+import discord4j.core.object.entity.channel.MessageChannel;
+import discord4j.core.event.domain.message.MessageCreateEvent;
 ```
 5. Set the code to:
 ```java
-DiscordBot db = DiscordBot.getDiscord();
-MessageReceivedEvent event = (MessageReceivedEvent)discordevent.get("event");
-IChannel c = event.getMessage().getChannel();
+DDiscordBot db = DiscordBot.getDiscord();
+MessageCreateEvent event = (MessageCreateEvent)discordevent.get("event");
+MessageChannel c = event.getMessage().getChannel().block();
 Bot bot = (Bot)discordevent.get("bot");
 
 JSONObject jo = new JSONObject();
