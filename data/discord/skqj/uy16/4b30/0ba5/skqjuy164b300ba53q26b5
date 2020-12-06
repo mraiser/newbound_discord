@@ -1,0 +1,1 @@
+{"data":{"java":"DiscordHelper.init();\nreturn null;","import":"import org.json.*;\nimport com.newbound.robot.*;\nimport com.newbound.robot.published.discord.*;","returntype":"JSONObject","params":[],"desc":""},"id":"skqjuy164b300ba53q26b5","sessionid":"jhtpuq15d03ce0a74q0","time":1532020646302,"username":"mraiser"}
