@@ -16,3 +16,84 @@ Select any Newbound Metabot Control to act as a Discord bot. Once connected to y
 5. Restart the Newbound software
 
 *Instead of moving the data/discord and runtime/discord folders you can create symbolic links to them, leaving your git project folder intact for easy updating*
+
+#Examples
+These examples assume you have created a new library called "test" and added a control called "test" and have enabled it as a bot using the Newbound Discord app are currently editing the API of that control using the Metabot.
+
+## Add two numbers
+![Screenshot](doc/screenshot_add.png)
+1. Add a new Command named "add" and edit it
+2. Set the return type to String
+3. Add Integer parameters "a" and "b"
+4. Set the code to:
+```java
+return a+" + "+b+" = "+(a + b);
+```
+## Take a screenshot
+*Requires the newbound_raspberry pi to be installed on peers you are connected to via the PeerBot*
+1. Add a new Command named "snapshot" and edit it
+2. Set the return type to String
+3. Add String parameter "peer"
+4. Add JSONObject parameter "discordevent"
+5. Set the imports to:
+
+```java
+import org.json.*;
+import com.newbound.robot.*;
+import com.newbound.net.mime.Base64Coder;
+import java.util.*;
+import java.io.*;
+import com.newbound.robot.published.DiscordBot;
+import com.newbound.robot.published.discord.Bot;
+import discord4j.core.object.entity.channel.MessageChannel;
+import discord4j.core.event.domain.message.MessageCreateEvent;
+import java.text.SimpleDateFormat;
+```
+6. Set the code to:
+```java
+Date d = new Date();
+String peername = peer;
+String filename = peer+"_"+d.getTime()+".jpg";
+
+// Probably safer to hard code the UUIDs of the peers you want to include rather than looking up the UUIDs by peer name.
+if (peer.equals("beebot1")) peer = "99999999-9999-9999-9999-999999999999";
+else if (peer.equals("videobot")) peer = "88888888-8888-8888-8888-888888888888";
+else throw new Exception("Unknown device: "+peer);
+
+PeerBot pb = PeerBot.getPeerBot();
+Hashtable h = new Hashtable();
+h.put("db", "raspberrypi");
+h.put("name", "cameramodule");
+h.put("cmd", "jpeg");
+h.put("args", new JSONObject("{\"time\":"+d.getTime()+"}"));
+JSONObject jo = pb.sendCommand(peer, "metabot", "call", h);
+System.out.println(jo);
+String fu = jo.getString("msg");
+System.out.println(fu);
+String imgstr = pb.getUploadedFile(peer, fu);
+File f = new File(imgstr);
+
+if (discordevent.has("event")) // Request is from Discord
+{
+  String pattern = "yyyy-MM-dd HH:mm:ssZ";
+  SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+  String date = simpleDateFormat.format(d);
+  String title = "Snapshot: "+peername+" "+date;
+
+  DiscordBot db = DiscordBot.getDiscord();
+  MessageCreateEvent event = (MessageCreateEvent)discordevent.get("event");
+  MessageChannel c = event.getMessage().getChannel().block();
+  Bot bot = (Bot)discordevent.get("bot");
+  
+  bot.sendFile(title, filename, f, c);
+  return null;
+}
+else // Request is NOT from Discord, return a data-uri of the image
+{
+  byte[] ba = BotUtil.readFile(f);
+  String base64str = new String(Base64Coder.encode(ba));
+  String uri = "data:image/jpg;base64,"+base64str;
+
+  return uri;
+}
+```
