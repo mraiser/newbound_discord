@@ -17,7 +17,7 @@ Select any Newbound Metabot Control to act as a Discord bot. Once connected to y
 
 *Instead of moving the data/discord and runtime/discord folders you can create symbolic links to them, leaving your git project folder intact for easy updating*
 
-#Examples
+# Examples
 These examples assume you have created a new library called "test" and added a control called "test" and have enabled it as a bot using the Newbound Discord app are currently editing the API of that control using the Metabot.
 
 ## Add two numbers
