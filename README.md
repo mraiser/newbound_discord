@@ -30,7 +30,7 @@ These examples assume you have created a new library called "test" and added a c
 return a+" + "+b+" = "+(a + b);
 ```
 ## Take a screenshot
-*Requires the newbound_raspberry pi to be installed on peers you are connected to via the PeerBot*
+*Requires the newbound_raspberrypi app (https://github.com/mraiser/newbound_raspberrypi) to be installed on peers you are connected to via the PeerBot*
 1. Add a new Command named "snapshot" and edit it
 2. Set the return type to String
 3. Add String parameter "peer"
