@@ -66,7 +66,7 @@ bot.sendEmbed("Holy moley, it's an embed", jo, c);
 
 return "(yay)";
 ```
-## Take a screenshot
+## Take a webcam snapshot
 *Requires the newbound_raspberrypi app (https://github.com/mraiser/newbound_raspberrypi) to be installed on peers you are connected to via the PeerBot*
 1. Add a new Command named "snapshot" and edit it
 2. Set the return type to String
