@@ -2,6 +2,7 @@ package com.newbound.robot.published.discord;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.time.Instant;
 import java.util.Properties;
 
@@ -116,10 +117,15 @@ public class Bot
 
 	public void sendFile(String message, String filename, File f, MessageChannel channel) throws Exception
 	{
+		FileInputStream is = new FileInputStream(f);
+		sendFile(message, filename, is, channel);
+	}
+
+	public void sendFile(String message, String filename, InputStream is, MessageChannel channel) throws Exception
+	{
 		channel.createMessage(spec -> {
 			try
 			{
-				FileInputStream is = new FileInputStream(f);
 				spec.addFile(filename, is);
 				spec.setContent(message);
 				//is.close();

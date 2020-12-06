@@ -21,7 +21,7 @@ Select any Newbound Metabot Control to act as a Discord bot. Once connected to y
 [![Newbound DiscordBot](http://img.youtube.com/vi/2CnYH8UGGNw/0.jpg)](http://www.youtube.com/watch?v=2CnYH8UGGNw "Newbound DiscordBot")
 
 # Examples
-These examples assume you have created a new library called "test" and added a control called "test" and have enabled it as a bot using the Newbound Discord app are currently editing the API of that control using the Metabot.
+These examples assume you have created a new library called "test" and added a control called "test" and have enabled it as a bot using the Newbound Discord app and are currently editing the API of that Control using the Metabot.
 
 ## Add two numbers
 ![Screenshot](doc/screenshot_add.png)
