@@ -29,6 +29,43 @@ These examples assume you have created a new library called "test" and added a c
 ```java
 return a+" + "+b+" = "+(a + b);
 ```
+## Send an embed
+1. Add a new Command named "embed" and edit it
+2. Set the return type to String
+3. Add JSONObject parameter "discordevent"
+4. Set the imports to:
+```java
+import org.json.*;
+import com.newbound.robot.*;
+import com.newbound.robot.published.DiscordBot;
+import com.newbound.robot.published.discord.Bot;
+import sx.blah.discord.handle.obj.IChannel;
+import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
+```
+5. Set the code to:
+```java
+DiscordBot db = DiscordBot.getDiscord();
+MessageReceivedEvent event = (MessageReceivedEvent)discordevent.get("event");
+IChannel c = event.getMessage().getChannel();
+Bot bot = (Bot)discordevent.get("bot");
+
+JSONObject jo = new JSONObject();
+jo.put("title", "Testing embed");
+jo.put("description", "Cool, no?");
+jo.put("color", 3447003);
+
+JSONObject img = new JSONObject();
+img.put("url", "https://www.newbound.com/botmanager/asset/site/newbound-hd-color.png");
+jo.put("image", img);
+
+img = new JSONObject();
+img.put("url", "https://www.newbound.io/botmanager/asset/newboundio/newbound-icon-small-white.png");
+jo.put("thumbnail", img);
+
+bot.sendEmbed("Holy moley, it's an embed", jo, c);
+
+return "(yay)";
+```
 ## Take a screenshot
 *Requires the newbound_raspberrypi app (https://github.com/mraiser/newbound_raspberrypi) to be installed on peers you are connected to via the PeerBot*
 1. Add a new Command named "snapshot" and edit it
@@ -36,7 +73,6 @@ return a+" + "+b+" = "+(a + b);
 3. Add String parameter "peer"
 4. Add JSONObject parameter "discordevent"
 5. Set the imports to:
-
 ```java
 import org.json.*;
 import com.newbound.robot.*;
