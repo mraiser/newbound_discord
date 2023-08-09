@@ -1,1 +1,1 @@
-{"readers":["anonymous"],"id":"discord","version":25,"username":"mraiser"}
+{"author":"399551da-b7d3-43ca-b95f-e08fd36f4621","authorkey":"319CFD457D9B5D7F03C0090F781748A0F1C214B3EF5246CFD57A190EC1A65036","authorname":"Some Dev","authororg":"","cargo":{"dependencies":{"serenity":"{ version = \"0.11.5\", default-features = false, features = [\"builder\", \"cache\", \"client\", \"rustls_backend\", \"model\", \"utils\", \"gateway\"] }"}},"readers":["anonymous"],"username":"system","version":7,"writers":[]}

@@ -1,0 +1,26 @@
+<div class='data-control' data-control='app:ui:{}'></div>
+<div class='wrap' style='display:none;'>
+  <div class='botlist'></div>
+  <br>
+  <div class='hideme card editbotpopup'>
+    <div class="pad16 card-header dialog-header">
+      <span class='dialog-title'>Add Bot</span>
+      <img src="../app/asset/app/close-white.png" class="upper-right close-add-dialog roundbutton-small out10">
+    </div>
+    <div class='pad16'>
+      <label class="textinputlabel" for="newbotname">Bot Name</label>
+      <input class="textinput" type="text" id="newbotname" value="UNTITLED">
+      <br><br>
+      <label class="textinputlabel" for="newbottoken">Token</label>
+      <input class="textinput" type="text" id="newbottoken" value="" placeholder="Enter discord bot token here">
+      <br><br>
+      <div class='data-control botctlselect' data-control='dev:selectctl:{}'></div>
+    </div>
+    <div class="card-description pad16">Select a control for this bot</div>
+    <div class="card-button-wrap">
+      <a class="clearbutton card-button-right green-text hideme cadb close-add-dialog doaddbutton">add</a>
+      <a class="clearbutton card-button-right green-text hideme cadb close-add-dialog dosavebutton">save</a>
+      <a class="clearbutton close-add-dialog">cancel</a>
+    </div>
+  </div>
+</div>
