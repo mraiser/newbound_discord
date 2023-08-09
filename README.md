@@ -14,7 +14,7 @@ https://github.com/mraiser/newbound
 
 *Instead of moving the data/discord and runtime/discord folders you can create symbolic links to them, leaving your git project folder intact for easy updating*
 
-# This project was recently ported to Rust from java. The rest of this README has not been updated since then and doesn't really apply anymore. It's only still here as a placeholder for me to drop in updates (hopefully soon).
+# This project was recently ported to Rust from Java. The rest of this README has not been updated since then and doesn't really apply anymore. It's only still here as a placeholder for me to drop in updates (hopefully soon).
 
 # Demo
 [![Newbound DiscordBot](http://img.youtube.com/vi/2CnYH8UGGNw/0.jpg)](http://www.youtube.com/watch?v=2CnYH8UGGNw "Newbound DiscordBot")
