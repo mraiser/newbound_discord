@@ -1,22 +1,20 @@
 # newbound_discord
-Select any Newbound Metabot Control to act as a Discord bot. Once connected to your Discord server, all the Commands in the Control's API become commands you can invoke from Discord. The Newbound Discord app will listen for messages that start with an exclamation point (!) and call the Command named with whatever follows the exclamation point. Parameters to the Command follow the command name with spaces between them.
+Select any Newbound Metabot Control to act as a Discord bot. Once connected to your Discord server, all the Commands in the Control's API become commands you can invoke from Discord. The Newbound Discord app will listen for messages that start with an exclamation point (!) and call the corresponding Command (if it exists), passing in the rest of the message as a String parameter named "prompt".
 
 # Dependencies
-1. This project requires an up-to-date working installation of the Newbound software
-   https://github.com/mraiser/newbound
-
-2. Discord4J and dependencies
-   https://search.maven.org/artifact/com.discord4j/discord4j-core/3.1.2/jar
+This project requires an up-to-date working installation of the Newbound software 
+https://github.com/mraiser/newbound
 
 # Installation
 1. Move the data/discord and runtime/discord folders into your Newbound installation's data and runtime folders, respectively
-2. Download the Discord4J jar files and their dependencies and drop them in your Newbound installation's "lib" folder
-3. Launch the Newbound software
-4. Toggle ON the "Inactive" apps in the Metabot app and select "DiscordBot"
+2. Launch the Newbound software
+3. Toggle ON the "Inactive" apps in the Metabot app and select "DiscordBot"
 4. Click the "ACTIVATE" button
 5. Restart the Newbound software
 
 *Instead of moving the data/discord and runtime/discord folders you can create symbolic links to them, leaving your git project folder intact for easy updating*
+
+# This project was recently ported to Rust from java. The rest of this README has not been updated since then and doesn't really apply anymore. It's only still here as a placeholder for me to drop in updates (hopefully soon).
 
 # Demo
 [![Newbound DiscordBot](http://img.youtube.com/vi/2CnYH8UGGNw/0.jpg)](http://www.youtube.com/watch?v=2CnYH8UGGNw "Newbound DiscordBot")
