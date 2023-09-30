@@ -18,7 +18,7 @@ if exists(dbid.clone(), ctlid.clone()) {
   return d;
 }
 
-let mut a = DataArray::new();
+let a = DataArray::new();
 let mut d = DataObject::new();
 d.put_array("list", a.clone());
 write(dbid.clone(), ctlid.clone(), d.clone(), DataArray::new(), DataArray::new());

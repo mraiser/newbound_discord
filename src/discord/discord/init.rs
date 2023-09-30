@@ -5,19 +5,9 @@ use serenity::{
           	prelude::*,
           };
 use serenity::model::Timestamp;
-use futures::executor::block_on;
 use std::path::Path;
-use flowlang::base64::*;
-use flowlang::flowlang::system::unique_session_id::unique_session_id;
 use std::sync::Once;
 use std::thread;
-use flowlang::datastore::DataStore;
-use ndata::dataarray::DataArray;
-use ndata::data::Data;
-use std::path::PathBuf;
-use std::fs::File;
-use std::io::Write;
-use flowlang::flowlang::file::read_all_string::read_all_string;
 use flowlang::flowlang::data::read::read;
 use flowlang::flowlang::data::exists::exists;
 use std::collections::HashMap;
@@ -37,12 +27,12 @@ static START: Once = Once::new();
 struct Handler {
   lib: String,
   cmd: HashMap<String, String>
-};
+}
 
 #[async_trait]
 impl EventHandler for Handler {
   async fn message(&self, ctx: Context, msg: Message) {
-    let u = msg.author.id.as_u64().to_string();
+    //let u = msg.author.id.as_u64().to_string();
     let input = msg.content;
     if input.starts_with("!") {
       let prompt = input[1..].to_string();
@@ -77,7 +67,7 @@ impl EventHandler for Handler {
             if o.has("content") { content = o.get_string("content"); }
             
             let mut files = Vec::new();
-            let msgx = msg
+            let _msg = msg
             .channel_id
             .send_message(&ctx.http, |m| {
               m

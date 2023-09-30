@@ -4,12 +4,12 @@ static START: Once = Once::new();
 struct Handler {
   lib: String,
   cmd: HashMap<String, String>
-};
+}
 
 #[async_trait]
 impl EventHandler for Handler {
   async fn message(&self, ctx: Context, msg: Message) {
-    let u = msg.author.id.as_u64().to_string();
+    //let u = msg.author.id.as_u64().to_string();
     let input = msg.content;
     if input.starts_with("!") {
       let prompt = input[1..].to_string();
@@ -44,7 +44,7 @@ impl EventHandler for Handler {
             if o.has("content") { content = o.get_string("content"); }
             
             let mut files = Vec::new();
-            let msgx = msg
+            let _msg = msg
             .channel_id
             .send_message(&ctx.http, |m| {
               m

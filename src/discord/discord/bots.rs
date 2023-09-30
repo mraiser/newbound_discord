@@ -4,7 +4,6 @@ use flowlang::flowlang::data::read::read;
 use ndata::data::Data;
 use flowlang::flowlang::data::write::write;
 use ndata::dataarray::DataArray;
-use flowlang::datastore::DataStore;
 
 pub fn execute(o: DataObject) -> DataObject {
 let a0 = o.get_property("list");
@@ -35,7 +34,7 @@ if exists(dbid.clone(), ctlid.clone()) {
   return d;
 }
 
-let mut a = DataArray::new();
+let a = DataArray::new();
 let mut d = DataObject::new();
 d.put_array("list", a.clone());
 write(dbid.clone(), ctlid.clone(), d.clone(), DataArray::new(), DataArray::new());
